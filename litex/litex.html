@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latex</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div class="absc"><a href="#top">返回顶部</a></div>
+    <div class="back_main"><a href="./main.html">返回主页</a></div>
+    <div class="title">Latex</div>
+    <div class="nav">
+        <ul>
+            <li><a href="#p1">基本结构与部分细节</a></li>
+            <li><a href="#p2">宏包</a></li>
+            <li><a href="#p3">文本模式</a></li>
+            <li><a href="#p4">特殊字符</a></li>
+            <li><a href="#p5">悬浮体</a></li>
+            <li><a href="#p6">插图</a></li>
+            <li><a href="#p7">表格</a></li>
+            <li><a href="#p8">数学模式</a></li>
+            <li><a href="#p9">引用</a></li>
+        </ul>
+    </div>
+    <a name="p1"></a>
+    <div class="n1">
+        <h1>基本结构与部分细节</h1>
+        <ul>
+            <li>
+                <pre class="pre">
+                \documentclass{article}  /*article是文档类，经常用来写论文  */
+                \begin{document} /**开始/
+                    正文区
+                \end{document}</pre>
+            </li>
+            <li>\tableofcontents 文档目录</li>
+            <li>
+                <ul>
+                    <li>%空行分段，多个空行等于一个</li>
+                    <li>%自动缩进，绝对不能使用空格代替</li>
+                    <li>%英文中多个空格处理为一个空格，中文中空格将被忽略</li>
+                    <li>%汉字与其他字符的间距会自动有latex处理</li>
+                    <li>%禁止使用中文全角空格</li>
+                </ul>
+            </li>
+            <li>段落设置 <br>
+                <pre>
+        \section{引言} %可以后续插入文本，作为小结内容
+            \subsection{子小结}
+                \subsubsection{下一结的小结}</pre>
+            </li>
+            <li>
+                <ul>
+                    <li>使用换行来实现文本的换行，文本内多次换行只会在pdf中换行一次，</li>
+                    <li>使用\\来换行，但不会产生新段落，首行不会缩进</li>
+                    <li>可以使用\par 来进行分段落，并且首行缩进</li>
+                </ul>
+            </li>
+            <li>\par 换行且下一行缩进</li>
+            <li>其他环境 
+                <ul>
+                    <li>\begin{itemize} 相当于html的ol <br>
+                        <pre class="pre">
+\begin{itemize}
+\item [*] 假定计算所得数据之间一定存在某种相似性，从而能够对数据进行分类。
+\item [*] 假定支持向量机满足强对偶关系，即min max(x) = max min(x)。
+\item [*] 假定所有不同种类数据间存在明显差别，即能够找到一组最优解使得全部数据4
+被有效的分开且不存在任何歧义
+\item [*] 假定所有企业之间相互独立，一家企业的决策不会对其他企业产生影响。
+\item [*] 假定疫情前与疫情后数据不存在显著的联系，即疫情前数据不会影响疫情后的
+数据。
+\item [*] 由于新型冠状病毒的爆发集中出现在 2020 年后，假定忽略 2019 年新冠的出现
+对企业盈利额的影响
+\end{itemize}
+                        </pre>
+                    </li>
+                    <li>\begin{enumerate} 相当于ul默认是1，2，3，需要指定选项值类似[i] <br>
+                        <pre class="pre">
+                \begin{enumerate}
+                \item 删除信誉评级为 D 的企业;
+                \item 剩余企业按照 A、B、C 三个等级进行分组;
+                \item 计算企业总盈利额;
+                \item 是否违约;
+            \end{enumerate}\par
+                        </pre>
+                    </li>
+                    <li>\begin{conter} %居中排版</li>
+                </ul>
+            </li>
+            <li>\tableofcontents 文档目录</li>
+        </ul>
+    </div>
+    <a name="p2"></a>
+    <div class="n2">
+        <h1>宏包</h1>
+        <pre class="pre">\usepackage{宏包名}</pre>
+        <ol>
+            <li>ctex 导入中文</li>
+            <li>amsmath 公式环境和数学命令</li>
+            <li>amssymb 数学符号生成命令</li>
+            <li>array 数组和表格制作</li>
+            <li>calc 四则运算</li>
+            <li>caption 插图和表格标题格式设置</li>
+            <li>fancyhdr 页眉页脚设置</li>
+            <li>fancyvrb 抄录格式设置</li>
+            <li>fontspec 字体选择</li>
+            <li>geometry 版面尺寸设置</li>
+            <li>graphicx 插图处理</li>
+            <li>hyperref 创建超文本链接和PDF书签</li>
+            <li>longtable 制作跨页表格</li>
+            <li>multicol 多栏排版</li>
+            <li>ntheorem 定理设置</li>
+            <li>paralist 多种列表环境</li>
+            <li>tabularx 自动设置表格列宽</li>
+            <li>titlesec 章节标题格式设置</li>
+            <li>titletoc 目录格式设置</li>
+            <li>xcolor 颜色处理</li>
+            <li>xeCJK 中日朝文字处理和字体选择</li>
+        </ol>
+    </div>
+    <a name = "p3"></a>
+    <div class="n3">
+        <h1>文本模式</h1>
+        <ul>
+            <li>字体设置 <br>
+                <ol>
+                    <li>字体族 <br>
+                        <ol>
+                            <li>罗马字体 <br>
+                                <ul>
+                                    <li>\textrm{Roman Family} %Roman Family将会以罗马字体显示</li>
+                                    <li>\rmfamily Roman Family %声明后续字体为罗马字体</li>
+                                </ul>
+                            </li>
+                            <li>无衬线字体 <br>
+                                <ul>
+                                    <li>\textsf{Sans Serif Family} %Sans Serif Family 将以无衬线字体显示</li>
+                                    <li>\sffamily Sans Serif Family %后续字体均以无衬线字体显示</li>
+                                </ul>
+                            </li>
+                            <li>打字机字体 <br>
+                                <ul>
+                                    <li>\texttt{Typewriter Family} %Typewriter Family将以打字机字体显示</li>
+                                    <li>\ttfamily Typewriter Family 后续字体均以打字机字体显示</li>
+                                </ul>
+                            </li>
+                            <li>可以使用大括号对文本限制，限制文本字体族的范围</li>
+                        </ol>
+                    </li>
+                    <li>字体系列 <br>
+                        <ul>
+                            <li>\textmd{mmmm} %中等粗细 or {\mdseries 文本}</li>
+                            <li>\textbf{sss} %加粗 or {\bfseries 文本}</li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+            <li>字体形状 <br>
+                <ol>
+                    <li>直立 <br>
+                        <ul>
+                            <li>\textup{文本} or {\upshape 文本}</li>
+                        </ul>
+                    </li>
+                    <li>斜体 <br>
+                        <ul>
+                            <li>\textit{文本} or {\itshape 文本}</li>
+                        </ul>
+                    </li>
+                    <li>伪斜体 <br>
+                        <ul>
+                            <li>\textsl{文本} or {\slshape 文本}</li>
+                        </ul>
+                    </li>
+                    <li> 小型大写 <br>
+                        <ul>
+                            <li>\textsc{文本} or {\scshape 文本}</li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+            <li>字体大小 <br>
+                <ul>
+                    <li>\tiny{Hello!}</li>
+                    <li>\scriptsize{Hello!}</li>
+                    <li>\footnotesize{Hello!}</li>
+                    <li>\small{Hello!}</li>
+                    <li>\normalsize{Hello!}</li>
+                    <li>\large{Hello!}</li>
+                    <li>\Large{Hello!}</li>
+                    <li>\LARGE{Hello!}</li>
+                    <li>\huge{Hello!}</li>
+                    <li>\Huge{Hello!}</li>
+                </ul>
+            </li>
+            <li>字号设置 <br>
+                \zihao{2} %2号字体</li>
+        </ul>
+    </div>
+    <a name = "p4"></a>
+    <div class="n4">
+        <h1>特殊字符</h1>
+        <ul>
+            <li>空格输入<br>
+                <ol>
+                    <li>\quad产生1em空白</li>
+                    <li>\qquad产生2em空白</li>
+                    <li>\ 反斜杠加空格输出一个空格</li>
+                    <li>\kern 1pc \kern+空格+参数+空格 实现指定大小的空格</li>
+                    <li>\hfill 弹性长度，撑满整个页面</li>
+                </ol>
+            </li>
+            <li>排版符号 <br>
+                \S \P \dag \dag \copyright \pounds</li>
+            <li>引号 <br>
+                <ul>
+                    <li>`表示‘ `` 表示‘‘</li>
+                    <li>'表示’ ''表示’’</li>
+                </ul>
+            </li>
+            <li>连字符 <br>
+                - -- --- 分别生成短中长的
+            </li>
+            <li>希腊字母 <br>
+                <ul>
+                    <li>$\alpha$</li>
+                    <li>$beta$</li>
+                    <li>$\gamma$</li>
+                    <li>$\epsilon$</li>
+                    <li>$\pi$</li>
+                    <li>$\omega$</li>
+                    <li>$\Gamma$</li>
+                    <li>$\Delta$</li>
+                    <li>$\Theta$</li>
+                    <li>$\Pi$</li>
+                    <li>$\Pi$</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <a name="p5"></a>
+    <div class="n5">
+        <h1>悬浮体</h1>
+        <li>figure[图] <br>
+            <ul>
+                <li>
+                    <pre>
+\begin{figure}[htbp]
+    \centering %居中排版
+    \includeuderrapgice[scale=0.3]{picture_name}
+    \caption{text}设置插图标题
+\end{figure}</pre>
+                </li>
+            </ul>
+        </li>
+        <li>table[表] <br>
+            <ul>
+                <li>
+                    <pre>
+\begin{table}
+    \centering%居中排版
+    \caption{text}%设置表格标题
+    \label{key}%为浮动体设置标签
+\end{table}</pre>
+                </li>
+                <li>见图\ref{key} %引用该标签</li>
+            </ul>
+        <li>figure与table在目前看到的区别，仅仅是使用\caption{}的时候，标题前面会有图1.+name，表1+name，但是若是你添加一个图片这个图片内容是一个表格的话，仍然可以使用表格悬浮体来插入图片
+        </li>
+        </li>
+    </div>
+    <a name = "p6"></a>
+    <div class="n6">
+        <h1>插图</h1>
+        <ul>
+            <li>\usepackage{graphicx}导入宏包</li>
+            <li>\includegraphics{<选项>
+                    <文件名>} <br>
+                        支持：EPS,PDF,PNG,JPEG,BMP <br>
+                        指定缩放因子，以及旋转等参数</li>
+            <li>\includegraphics[scale=0.3]{文件名} %文件名可以不带后缀，但是选项必须使用[]
+                <ul>
+                    <li>scale 缩放因子</li>
+                    <li>height 高度</li>
+                    <li>width 宽度 </li>
+                    <li>angle 旋转角度</li>
+                </ul>
+            </li>
+            <li>在悬浮体figure[图] 插入一个excel图片
+                <pre class="pre">
+\begin{table}[htbp]
+        \centering
+        \caption{应用于聚类分析的处理数据}
+        \includegraphics[scale=0.4]{1.JPG}
+\end{table}</pre>
+            </li>
+        </ul>
+    </div>
+    <a name = "p7"></a>
+    <div class="n7">
+        <h1>表格</h1>
+        <ul>
+            <pre class="pre">
+\begin{tabular}{选项}
+选项：l表示左对齐
+        c表示居中对齐
+        r表示右对齐
+        |产生竖线
+        ||产生双竖线
+        p{1.5cm}指定宽度的列
+\hline产生横线
+列值与列值之间使用&分开
+使用\\换行</pre>
+            <li>简单表格
+                <pre class="pre">
+\begin{table}[htbp]
+    \centering
+    \caption{虚拟变量的数值化}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        表中变量 & 变量取值 & 重新定义\\
+        \hline
+        \multirow{2}{*}{是否违约} & 是 & 1 \\
+                                & 否 & 0\\
+        \hline
+        \multirow{2}{*}{发票状态} & 有效发票 & 0 \\
+                                 & 无效发票 & 1 \\
+        \hline
+        \end{tabular}
+\end{table}</pre>
+            </li>
+            <li>复杂表格
+                <pre class="pre">
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+         & 符号 & 含义 \\
+        \hline
+        \multirow{5}{*}{解决问题一的定义变量} & $i$      & 各企业 \\
+                                    & $ s_i $ & 是否违约 \\
+                                    & $ q_i $ & 企业盈利额 \\
+                                    & $ z_i $ & 客户流失率估计值 \\
+                                    & k & 聚类数量\\
+    \hline
+        \multirow{4}{*}{决问题一的定义变量} & $x_i $ &企业盈利额 \\
+                                           & $ y_i $ & 作废发票比例\\
+                                           & $ w $ & 超平面的斜率 \\
+                                           & $b$ &  超平面的截距\\
+    \hline
+        \multirow{5}{*}{解决问题三的定义变量} & $x_{i1} $ & 新冠爆发前企业盈利额 \\
+                                            & $ x_{i2} $ & 新冠爆发后企业盈利额 \\
+                                            & $X$ & 数据矩阵 \\
+                                            & $P$ & 概率矩阵 \\
+                                            & $Z$ & 过渡矩阵 \\
+    \hline
+        \multirow{4}{*}{确定信贷策略时使用的变量} & $t_i$ & 贷款总额 \\
+                                                & $f_i$ & 营业额 \\
+                                                & $x_i$ & 客户流失率 \\
+                                                & $a_i$ & 贷款年利率 \\
+                                                & $h_i$ & 企业未在规定时间内还款的数额 \\
+    \hline                                    
+    \end{tabular}
+\end{table}</pre>
+            </li>
+        </ul>
+    </div>
+    <a name="p8"></a>
+    <div class="n8">
+        <h1>数学模式</h1>
+        <ul>
+            <li>\boldmath  $  $ %数学公式的加粗 <br>
+                使用完该命令后要记得将恢复现场 <br>
+                    \unboldmath\\boldmath
+            </li>
+            <li>上下标 <ul>
+                    <li>^上标 只会对紧随其后的单个字符排版，若指数部分超过两个， 则需要加{}</li>
+                    <li>_下标</li>
+                </ul>
+            </li>
+            <li>部分数学函数 <br>
+                <ul>
+                    <li>$\log$</li>
+                    <li>$\sin$</li>
+                    <li>$\cos$</li>
+                    <li>$\arcsin$</li>
+                    <li>$\arccos$</li>
+                    <li>$\In$</li>
+                    <li>$\sqrt{}$ %根号</li>
+                    <li>$\[4]{x}$ 4次根号下</li>
+                    <li>$\3/4$ <--> $\frac{3}{4}$</li>
+                    <li>^\circ实现度数右上角角标</li>
+                </ul>
+            </li>
+            <li>行内公式 <br>
+                <ul>
+                    <li>$^$ 在$符号之间的内容，被称为数学模式</li>
+                    <li>\begin{math} \end{math}</li>
+                    <li>\( )\</li>
+                    <li>/begin{displaymath} /end{displaymath} %行间公式</li>
+                </ul>
+            </li>
+            <li>行间公式 <br>
+                <ul>
+                    <li>$$ $$行间公式，会另起一行，中间显示公式</li>
+                    <li>
+                        <pre>
+\begin{equation}
+    文档公式排版，自动编号（可以使用\label{}添加标签，使用\ref{}引用标签）
+\end{equation}</pre>
+                    </li>        
+                </ul>
+            </li>
+            <li>多行公式
+                <ul>
+                    <li>\usepackage{amsmath} </li>
+                    <li>gather环境实现多行公式排版
+                        <pre>
+\begin{gather}环境实现多行公式排版
+%带编号
+%可以使用\\换行
+%可以在结尾使用notage命令阻滞编号
+\end{gather}
+\begin{gather*}实现不带编号的排版</pre>
+                    </li>
+                    <li>algin环境对指定位置进行对齐
+                        <pre>
+\begin{algin}环境对指定位置进行对齐
+指定位置用&指出
+\end{algin}
+\begin{algin*}不进行编号</pre>
+                    </li>
+                    <li>split环境实现一个公式多行排版
+                        <pre>
+\begin{split}环境可以使得一个公式多行排版
+使用\\换行，&指定对齐
+\end{split}</pre>
+                    </li>
+                    <li>cases环境实现分段函数
+                        <pre>
+\begin{cases}环境实现分段函数
+%使用&进行分割两部分，
+%通常表示值和后面的条件
+\in 输出属于符号
+\end{cases}</pre>
+                        <pre class="pre">
+\[f_{(x,y) = }
+\begin{cases}
+    x + y; & x > 10,y < 10\\
+    2x + 4y; & x < 10, y < 10\\
+    4x + 3y; & x < 10 ,y > 10 \\
+    x + 22y; & x > 10,y > 10;
+\end{cases}\]  %整个环境要置于数学模式下
+                        </pre>
+                    </li>
+                </ul>
+            </li>
+            <li>\text用于在数学公式中临时切换到文本模式</li>
+            <li>矩阵 <br>
+                <ul>
+                    <li>usepackage{amsmath}</li>
+                    <li>
+                        <pre>
+\begin{matrix} //矩阵
+0 & 1 \\
+1 & 0
+\end{matrix}</pre>
+                    </li>
+                    <li>矩阵公式边框 <br>
+                    <ul>
+                        <li>\begin{pmatrix} 矩阵两端加小括号</li>
+                        <li>\begin{bmatrix} 矩阵两端加中括号</li>
+                        <li>\begin{Bmatrix} 矩阵两端加大括号</li>
+                        <li>\begin{vmatrix} 矩阵两端加单竖线</li>
+                        <li>\begin{Vmatrix} 矩阵两端加双竖线</li>
+                        <li>省略号：\dots \vdots \ddots</li>
+                        <li>可以使用\times排版乘号</li>
+                    </ul></li>
+                    <li>分块矩阵\matrix<br>
+                        <ul>
+                            <li>\multicolumn{2}合并多列(2列)</li>
+                            <li>\raisebox{1.3ex}[0pt]h合并多行</li>
+                            <li>\hdotsfor{<列数>}跨列省略号</li>
+                            <li>\begin{smallmatrix}排版行内小矩阵
+                                <ul>
+                                    <li>\left(  %用于生成左小括号</li>
+                                        <li>\right) %用于生成右小括号</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>\begin{array}环境类似表格tabular环境</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <a name="p9"></a>
+    <div class="n9">
+        <h1>引用</h1>
+        <ul>
+            <li>使用\cite{liu}使用该便签
+                <pre>
+\begin{thebibliography}{5} %最多引用5条
+\bibitem{liu} 刘海洋. \LaTeX 入门 [M]. 北京: 电子工业出版社, 2013.
+\bibitem{hu}  胡伟. \LaTeX 2e完全学习手册(第二版). 北京: 清华大学出版社, 2013.
+\end{thebibliography}
+                </pre>
+                <pre class="pre">
+参考了\cite{ref1}
+\begin{thebibliography}{99}  
+    \bibitem{ref1}Zheng L, Wang S, Tian L, et al., Query-adaptive late fusion for image search and person re-identification, Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 2015: 1741-1750.  
+    \bibitem{ref2}Arandjelović R, Zisserman A, Three things everyone should know to improve object retrieval, Computer Vision and Pattern Recognition (CVPR), 2012 IEEE Conference on, IEEE, 2012: 2911-2918.  
+    \bibitem{ref3}Lowe D G. Distinctive image features from scale-invariant keypoints, International journal of computer vision, 2004, 60(2): 91-110.  
+    \bibitem{ref4}Philbin J, Chum O, Isard M, et al. Lost in quantization: Improving particular object retrieval in large scale image databases, Computer Vision and Pattern Recognition, 2008. CVPR 2008, IEEE Conference on, IEEE, 2008: 1-8.  
+\end{thebibliography}
+                </pre>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
