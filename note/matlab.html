@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>matlab</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div class="absc"><a href="#top">返回顶部</a></div>
+    <div class="back_main"><a href="./main.html">返回主页</a></div>
+    <a name="jump1"></a>
+    <div class="nav_top">
+        <ul>
+            <li><a href="#p1">帮助文档查看方式</a></li>
+            <li><a href="#p2">matlab的部分关键字</a></li>
+            <li><a href="#p3">变量</a></li>
+            <li><a href="#p4">命令行设置</a></li>
+            <li><a href="#p5">矩阵</a></li>
+            <li><a href="#p6">程序基础及界面介绍</a></li>
+            <li><a href="#p7">程序介绍</a></li>
+            <li><a href="#p8">自定义函数</a></li>
+            <li><a href="#p9">变数（变量）</a></li>
+            <li><a href="#p10">char与string</a></li>
+            <li><a href="#p11">结构体</a></li>
+            <li><a href="#p12">cell元胞数组</a></li>
+        </ul>
+    </div>
+    <div class="title">matlab的基础操作与矩阵输入</div>
+    <div class="nav">
+        <ul>
+            <li><a href="#p1">帮助文档查看方式</a></li>
+            <li><a href="#p2">matlab的部分关键字</a></li>
+            <li><a href="#p3">变量</a></li>
+            <li><a href="#p4">命令行设置</a></li>
+            <li><a href="#p5">矩阵</a></li>
+        </ul>
+    </div>
+    <a name="p1"></a>
+    <div class="n1">
+        <h1>matlab的函数帮助查看方式</h1>
+        <ul>
+            <li>1.通过右上角的帮助文档查看栏，输入要查询的函数</li>
+            <li>2.通过百度</li>
+            <li>3.在命令行窗口输入help 需要查询的函数<br>
+                <pre class="pre">
+>> help sin
+sin - 参数的正弦，以弧度为单位
+
+    此 MATLAB 函数 返回 X 的元素的正弦。sin 函数按元素处理数组。该函数同时接受实数和复数输入。对于 X 在区间 [-Inf, Inf]
+    内的实数值，sin 返回区间 [-1 ,1] 内的实数值。对于 X 的复数值，sin 返回复数值。所有的角度都以弧度表示。
+
+    Y = sin(X)</pre>
+            </li>
+        </ul>
+    </div>
+    <a name="p2"></a>
+    <div class="n2">
+        <h1>matlab的部分关键字</h1><br>
+        <ul>
+            <li>圆周率在matlab中使用"pi"<br>
+                <pre class="pre">
+>> help pi
+pi - 圆的周长与其直径的比率
+
+    此 MATLAB 函数 返回最接近 π 的值的浮点数。表达式 4*atan(1) 和 imag(log(-1)) 提供相同的值。
+>> pi
+
+ans =
+
+        355/113</pre>
+            </li>
+            <li>ln在matlab中使用log<br>
+                <pre class="pre">
+>> help log
+log - 自然对数
+
+    此 MATLAB 函数 返回数组 X 中每个元素的自然对数 ln(x)。
+
+    Y = log(X)
+
+>> log2(4)
+
+ans =
+
+        2</pre>
+            </li>
+            <li>
+                key_word:ans <br>
+                i,j <复数> <br>
+                    INF <无穷> <br>
+                        eps <2.2204e-016> <br>
+                            NaN: not a number <br>
+                            pi: 圆周率
+            </li>
+        </ul>
+    </div>
+    <a name="p3"></a>
+    <div class="n3">
+        <h1>变量</h1>
+        <ul>
+            <li>定义变量格式
+                <pre class="pre">
+>> a = 12
+
+a =
+
+    12       
+
+>> 12 = a
+12 = a
+↑
+错误: '=' 运算符的使用不正确。要为变量赋值，请使用 '='。要比较值是否相等，请使用 '=='。</pre>
+            </li>
+            <li>区分大小写
+                <pre class="pre">
+>> a = 12
+
+a =
+
+      12       
+
+>> A = 12
+
+A =
+
+      12       
+
+>> a + A
+
+ans =
+
+      24</pre>
+            </li>
+            <li>有字符串概念 <br>
+                字符串需要加引号 <br>
+                查询需要用括号，而不能使用[]<br>
+                <pre class="pre">
+>> a = '123456'
+
+a =
+
+    '123456'
+
+>> a(3)
+
+ans =
+
+    '3'
+
+>> a(3) = 'a'
+
+a =
+
+    '12a456'
+
+>> a[2]
+ a[2]
+  ↑
+错误: 表达式无效。调用函数或对变量进行索引时，请使用圆括号。否则，请检查不匹配的分隔符。</pre>
+            </li>
+            <li>清除变量 <br>
+                clear 变量名 <br>
+                若是不加参数的话，会直接消除所有的变量
+            </li>
+        </ul>
+    </div>
+    <a name="p4"></a>
+    <div class="n4">
+        <h1>设置命令行窗口输出显示格式</h1>
+        <ul>
+            <li>format style <br>
+                format将命令行窗口中的显示格式更改为style指定的格式 <br>
+                若是不加参数，会重置为默认值</li>
+            <li>
+                <ol>
+                    <li>short (default) <br>
+                        固定十进制短格式，小数点后包含 4 位数。<br>
+                        3.1416</li>
+                    <hr color='white'>
+                    <li>long <br>
+                        长固定小数格式，double 值的小数点后包含 15 位数，single 值的小数点后包含 7 位数。<br>
+                        3.141592653589793</li>
+                    <hr color='white'>
+                    <li>shortE <br>
+                        短科学记数法，小数点后包含 4 位数。<br>
+                        3.1416e+00</li>
+                    <hr color='white'>
+                    <li>longE <br>
+                        长科学记数法，double 值的小数点后包含 15 位数，single 值的小数点后包含 7 位数。<br>
+                        3.141592653589793e+00</li>
+                    <hr color='white'>
+                    <li>shortG <br>
+                        短固定小数格式或科学记数法（取更紧凑的一个），总共 5 位。<br>
+                        3.1416</li>
+                    <hr color='white'>
+                    <li>longG <br>
+                        长固定小数格式或科学记数法（取更紧凑的一个），对于 double 值，总共 15 位；对于 single 值，总共 7 位。<br>
+                        3.14159265358979</li>
+                    <hr color='white'>
+                    <li>shortEng <br>
+                        短工程记数法，小数点后包含 4 位数，指数为 3 的倍数。<br>
+                        3.1416e+000</li>
+                    <hr color='white'>
+                    <li>longEng <br>
+                        长工程记数法，包含 15 位有效位数，指数为 3 的倍数。<br>
+                        3.14159265358979e+000</li>
+                    <hr color='white'>
+                    <li>+ <br>
+                        正/负格式，对正、负和零元素分别显示 +、- 和空白字符。</li>
+                    <hr color='white'>
+                    <li>bank <br>
+                        货币格式，小数点后包含 2 位数。<br>
+                        3.14</li>
+                    <hr color='white'>
+                    <li>hex <br>
+                        二进制双精度数字的十六进制表示形式。<br>
+                        400921fb54442d18</li>
+                    <hr color='white'>
+                    <li>rat <br>
+                        小整数的比率。<br>
+                        以分数形式</li>
+                    <hr color='white'>
+                </ol>
+            </li>
+            <li>有dos的风格 <br>
+                在命令行窗口使用 [向上方向键] 时，会显示上一条程式</li>
+            <li>clc <br>
+                clear command window display <br>
+                <pre class="pre">
+>> help clc
+clc - 清除命令行窗口
+
+此 MATLAB 函数 从命令行窗口显示中清除所有输入和输出，创造一个干净的屏幕。</pre>
+            </li>
+            <li>';'的作用 <br>
+                在matlab中，在每一个程式后添加';'，命令行窗口不会显示结果 <br>
+                <pre class="pre">
+>> a = 12;
+>> a = 12
+
+a =
+
+  12       
+</pre>
+            </li>
+        </ul>
+    </div>
+    <a name="p5"></a>
+    <div class="n5">
+        <h1>矩阵</h1>
+        <ul>
+            <li>使用空格分隔列 <br>
+                使用';'分割行</li>
+            <li>查询
+                <ol>
+                    <li>使用括号查询，且起始行和列均为1</li>
+                    <li>简单的二维下标查询 <br>
+                        <pre class="pre">
+>> a = [
+1 2 3
+4 5 6]
+
+a =
+
+        1              2              3       
+        4              5              6       
+
+>> a(1,2)
+
+ans =
+
+        2</pre>
+                    </li>
+                    <li>若是在()中加上[]则返回一个矩阵，
+                        内部参数是原矩阵的下标，外显示由
+                        在这些下标处的原矩阵的值构成的矩阵 <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2              3       
+       4              5              6       
+
+>> a([1 2 3 4])
+
+ans =
+
+       1              4              2              5</pre>
+                    </li>
+                    <li>matlab中，是先数列后数行 <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2              3       
+       4              5              6       
+
+>> a(3)
+
+ans =
+
+       2</pre>
+                    </li>
+                </ol>
+            </li>
+            <li>range划分 <br>
+                <ol>
+                    <li>[<起始数值>:<步长>:<结束数值>] <br>
+                                    A = [1:100] <br>
+                                    会产生起始为1，步长为1（默认）结束为100， <br>
+                                    且以行的方式存放<br>
+                                    <pre class="pre">
+>> a = [1:6]
+
+a =
+
+       1              2              3              4              5              6   </pre>
+                                    [j:k] -> [j j+1 j+2 j+3 ......l+m];
+                    </li>
+
+                    <hr color='white'>
+                    <li>B = [1:2:100] <br>
+                        会产生起始为1，步长为2，结束为100的等差矩阵且以行的方式存放 <br>
+                        <pre class="pre">
+>> a = [1:2:10]
+
+a =
+
+       1              3              5              7              9 </pre>
+                        [j:i:k] -> [j j+i j+2i j+3i ......j+m*i];
+                    </li>
+                </ol>
+            </li>
+            <li>指定矩阵中的某一列或是某一行</li>
+            a(1,:) 指定第一行矩阵 <br>
+            a(:,1) 指定第一列矩阵 <br>
+            <pre class="pre">
+>> a
+
+a =
+
+       1              2              3       
+       4              5              6       
+       7              8              9       
+
+>> a(1,:)
+
+ans =
+
+       1              2              3       
+
+>> a(:,1)
+
+ans =
+
+       1       
+       4       
+       7 </pre>
+            <li>矩阵的合并 <br>
+                <pre class="pre">
+>> a = [
+1 2
+3 4]
+
+a =
+
+       1              2       
+       3              4       
+
+>> b = [
+5 6
+7 8]
+
+b =
+
+       5              6       
+       7              8       
+
+>> [a b]
+
+ans =
+
+       1              2              5              6       
+       3              4              7              8       
+
+>> [a;b]
+
+ans =
+
+       1              2       
+       3              4       
+       5              6       
+       7              8 </pre>
+            </li>
+            <li>
+                矩阵的计算：<br>
+                <ol>
+                    <li>+- <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2       
+       3              4       
+
+>> b
+
+b =
+
+       5              6       
+       7              8       
+
+>> a+b
+
+ans =
+
+       6              8       
+      10             12       
+
+>> a-b
+
+ans =
+
+      -4             -4       
+      -4             -4</pre>
+                    </li>
+                    <li>*与.*: <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2       
+       3              4       
+
+>> b
+
+b =
+
+       5              6       
+       7              8       
+
+>> a*b
+
+ans =
+
+      19             22       
+      43             50       
+
+>> a.*b
+
+ans =
+
+       5             12       
+      21             32</pre>
+                    </li>
+                    <li>/与./ <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2       
+       3              4       
+
+>> b
+
+b =
+
+       5              6       
+       7              8       
+
+>> a/b
+
+ans =
+
+       3             -2       
+       2             -1       
+
+>> a./b
+
+ans =
+
+       1/5            1/3     
+       3/7            1/2</pre>
+                    </li>
+                </ol>
+            </li>
+            <li>矩阵与实数的四则运算：<br>
+                <ol>
+                    <li>+- <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2       
+       3              4       
+
+>> a+2
+
+ans =
+
+       3              4       
+       5              6       
+
+>> a-2
+
+ans =
+
+      -1              0       
+       1              2</pre>
+                    </li>
+                    <li>
+                        *\ <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2       
+       3              4       
+
+>> a*2
+
+ans =
+
+       2              4       
+       6              8       
+
+>> a/2
+
+ans =
+
+       1/2            1       
+       3/2            2 </pre>
+                    </li>
+                </ol>
+            </li>
+            <li>矩阵的转置 <br>
+                <pre class="pre">
+>> a
+
+a =
+
+       1              2       
+       3              4       
+
+>> a'
+
+ans =
+
+       1              3       
+       2              4 </pre>
+            </li>
+            <li>特殊矩阵 <br>
+                <ol>
+                    <li>单位矩阵：eye(n) <br>
+                        <pre class="pre">
+>> help eyes
+--- eye 的帮助 ---
+
+eye - 单位矩阵
+
+    此 MATLAB 函数 返回标量 1。
+
+    I = eye
+    I = eye(n)
+    I = eye(n,m)
+    I = eye(sz)
+    I = eye(classname)
+    I = eye(n,classname)
+    I = eye(n,m,classname)
+    I = eye(sz,classname)
+    I = eye('like',p)
+    I = eye(n,'like',p)
+    I = eye(n,m,'like',p)
+    I = eye(sz,'like',p)
+>> eye(4)
+
+ans =
+
+       1              0              0              0       
+       0              1              0              0       
+       0              0              1              0       
+       0              0              0              1 </pre>
+                    </li>
+                    <li>全零矩阵：zeros(n1,n2) <br>
+                        <pre class="pre">
+
+>> help zeros
+zeros - 创建全零数组
+
+    此 MATLAB 函数 返回标量 0。
+
+    X = zeros
+    X = zeros(n)
+    X = zeros(sz1,...,szN)
+    X = zeros(sz)
+    X = zeros(___,typename)
+    X = zeros(___,'like',p)
+>> zeros(2,3)
+
+ans =
+
+       0              0              0       
+       0              0              0 </pre>
+                    </li>
+                    <li>全1矩阵： ones(n1,n2) <br>
+                        <pre class="pre">
+>> help ones
+ones - 创建全部为 1 的数组
+
+    此 MATLAB 函数 返回标量 1。
+
+    X = ones
+    X = ones(n)
+    X = ones(sz1,...,szN)
+    X = ones(sz)
+    X = ones(classname)
+    X = ones(n,classname)
+    X = ones(sz1,...,szN,classname)
+    X = ones(sz,classname)
+    X = ones('like',p)
+    X = ones(n,'like',p)
+    X = ones(sz1,...,szN,'like',p)
+    X = ones(sz,'like',p)
+>> ones(3,4)
+
+ans =
+
+       1              1              1              1       
+       1              1              1              1       
+       1              1              1              1 </pre>
+                    </li>
+                    <li>对角矩阵：diag() <br>
+                        <pre class="pre">
+>> help diag
+diag - 创建对角矩阵或获取矩阵的对角元素
+
+    此 MATLAB 函数 返回包含主对角线上向量 v 的元素的对角矩阵。
+
+    D = diag(v)
+    D = diag(v,k)
+    x = diag(A)
+    x = diag(A,k)
+
+>> a
+
+    a =
+    
+           1              2       
+           3              4       
+    
+    >> diag(a)
+    
+    ans =
+    
+           1       
+           4</pre>
+                    </li>
+                    <li>随机矩阵 <br>
+                        <pre class="pre">
+>> help rand
+rand - 均匀分布的随机数
+
+    此 MATLAB 函数 返回一个在区间 (0,1) 内均匀分布的随机数。
+
+    X = rand
+    X = rand(n)
+    X = rand(sz1,...,szN)
+    X = rand(sz)
+    X = rand(___,typename)
+    X = rand(___,'like',p)
+
+>> rand(3,5)
+
+ans =
+
+     664/815        717/785        408/1465       687/712        581/607   
+    1298/1433      1493/2361      1324/2421       589/3737       614/1265  
+     751/5914       694/7115       338/353       6271/6461      1142/1427  </pre>
+                    </li>
+                </ol>
+            </li>
+            <li>矩阵函数 <br>
+                <ol>
+                    <li>max(A) ->最大值（分列显示） <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2              3              4              5       
+       6              7              8              9             10       
+      11             12             13             14             15       
+
+>> max(a)
+
+ans =
+
+      11             12             13             14</pre>
+                    </li>
+                    <li>max(max(A)) ->整个A中最大值 <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2              3              4              5       
+       6              7              8              9             10       
+      11             12             13             14             15       
+
+>> max(max(a))
+
+ans =
+
+      15</pre>
+                    </li>
+                    <li>min(A) ->最小值（分列显示） <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2              3              4              5       
+       6              7              8              9             10       
+      11             12             13             14             15       
+
+>> min(a)
+
+ans =
+
+       1              2              3              4</pre>
+                    </li>
+                    <li>min(min(A)) ->整个A中最小值 <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2              3              4              5       
+       6              7              8              9             10       
+      11             12             13             14             15       
+
+>> min(min(a))
+
+ans =
+
+       1</pre>
+                    </li>
+                    <li>sum(A) ->求和（分列显示） <br>
+                        <pre class="pre">
+>> sum(a)
+
+ans =
+
+      18             21             24             27             30</pre>
+                    </li>
+                    <li>sum(sum(A)) ->整个A求和 <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2              3              4              5       
+       6              7              8              9             10       
+      11             12             13             14             15       
+
+>> sum(sum(a))
+
+ans =
+
+     120</pre>
+                    </li>
+                    <li>mean(A) ->矩阵的均值（分列显示） <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       1              2              3              4              5       
+       6              7              8              9             10       
+      11             12             13             14             15       
+
+>> mean(a)
+
+ans =
+
+       6              7              8              9 </pre>
+                    </li>
+                    <li>mean(mean(A)) -> 整个矩阵的均值 <br>
+                        <span>
+                            >> a
+
+                            a =
+
+                            1 2 3 4 5
+                            6 7 8 9 10
+                            11 12 13 14 15
+
+                            >> mean(mean(a))
+
+                            ans =
+
+                            8</span></li>
+                    <li>sort(A) -> 对列进行排序（分列显示） <br>
+                        <pre class="pre">
+>> a
+
+        a =
+        
+               2              4              6              3              7       
+               1              3              5              3              7       
+               3              7              3              6              7       
+        
+        >> sort(a)
+        
+        ans =
+        
+               1              3              3              3              7       
+               2              4              5              3              7       
+               3              7              6              6              7</pre>
+                    </li>
+                    <li> sortrows(A) -> 对列进行排序后，行会发现改变
+                        此 MATLAB 函数 基于第一列中的元素按升序对
+                        矩阵行进行排序。当第一列包含重复的元素时，
+                        sortrows 会根据下一列进行排序，并对后续的
+                        相等值重复此行为。 <br>
+                        <pre class="pre">
+>> a
+
+a =
+
+       2              4              6              3              7       
+       1              3              5              3              7       
+       3              7              3              6              7       
+
+>> sortrows(a)
+
+ans =
+
+       1              3              5              3              7       
+       2              4              6              3              7       
+       3              7              3              6</pre>
+                    </li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+    <a name="jump2"></a>
+    <div class="title">
+        <div class="title">结构化程式与自定义函数</div>
+    </div>
+    <div class="nav">
+        <ul>
+            <li> <a href="#p6">程序基础及界面介绍</a></li>
+            <li><a href="#p7">程序介绍</a></li>
+            <li><a href="#p8">自定义函数</a></li>
+        </ul>
+    </div>
+
+    <a name="p6"></a>
+    <div class="n1">
+        <h1>程序基础及界面介绍</h1>
+        <ul>
+            <li>按下左上角的New Script按钮后，会弹出一个editor[编辑器]出现</li>
+            <li>
+                <ol>
+                    <li>按下导航栏中的run[执行按钮]</li>
+                    <li>按F5</li>
+                </ol>
+            </li>
+            <li>编辑器->插入->function[函数]以查询函数</li>
+            <li>matalb以'%'作为程序的注释开头</li>
+            <li>多行注释，选中Ctrl+R，取消注释，选中Ctrl+T</li>
+            <li>区块的概念，模块化思想，以双'%%'开始，到下一个双'%%'结束，可以执行单个快，快捷键为Ctrl+Enter。或者选择右上角的run section[执行节]</li>
+            <li>Debug，和其他vscode类似，在指令起始处单击添加断点 </li>
+            <li>智能缩进[smart indent]，选中需要执行的代码块鼠标右键后，选择smart indent即可智能缩进</li>
+        </ul>
+    </div>
+    <a name="p7"></a>
+    <div class="n2">
+        <h1>程序介绍</h1>
+        <ul>
+            <li>关键字<br>
+                <ol>
+                    <li>if,elseif,else <br>
+                        if和end共同建立一个代码块，中间用elseif和else隔开<br>
+                        <pre>
+if condition1
+    statement1
+elseif condition2
+    statement2
+else
+    statement3
+end</pre>
+                        <pre class="pre">
+>> help rem
+rem - 除后的余数
+
+    此 MATLAB 函数 返回用 b 除以 a 后的余数，其中 a 是被除数，b 是除数。此函数通常称为求余运算，表达式为 r = a -
+    b.*fix(a./b)。rem 函数遵从 rem(a,0) 是 NaN 的约定。
+
+    r = rem(a,b)
+
+    另请参阅 mod
+
+    rem 的参考页
+    名为 rem 的其他函数
+
+>> help disp
+disp - 显示变量的值
+
+    此 MATLAB 函数 显示变量 X 的值，而不打印变量名称。显示变量的另一种方法是键入它的名称，这种方法会在值前面显示一个前导X =。
+
+    disp(X)
+
+a = 3;
+if rem(a,2) == 0
+    disp('a is even')
+else 
+    disp('a is odd')
+end
+>> Untitled
+a is odd
+</pre>
+                    </li>
+                    <li>for <br>
+                        <pre>
+for variable = start : increment : end
+    commands
+end</pre>
+                        <pre class="pre">
+for n = 1:10
+    a(n) = 2^n;
+end
+disp(a)
+
+>> Untitled
+  1 至 9 列
+
+           2           4           8          16          32          64         128         256         512
+
+  10 列
+
+        1024
+</pre>
+                        还可以提前申请好空间，以加快速度 <br>
+                        <pre class="pre">
+A = zeros(2000,2000)</pre>
+                    </li>
+                    <li>switch,case<br>
+                        基本用法与c/c++类似
+                        <pre>
+switch expression
+case value1
+    statment1
+case value2
+    statment2
+.
+.
+.
+otherwise
+    statement
+end</pre>
+                        <pre class="pre">
+input_num = 1;
+switch input_num
+case -1
+    disp('value -1');
+case 0
+    disp('value 0');
+case 1
+    disp('value 1');
+otherwise
+    disp('other value');
+end
+
+>> Untitled
+value 1</pre>
+                    </li>
+                    <li>otherwise <br>
+                        <span>
+                            >> help otherwise
+                            otherwise - 执行多组语句中的一组
+
+                            此 MATLAB 函数 计算表达式并选择执行多组语句中的一组。每个选项为一个 case。
+
+                            switch switch_expression, case case_expression, end
+
+                            switch switch_expression
+                            case case_expression
+                            statements
+                            case case_expression
+                            statements
+                            ...
+                            otherwise
+                            statements
+                            end</span>
+                    </li>
+                    <li>while <br>
+                        语法与c/c++基本类似 <br>
+                        <pre>
+while expression
+    statement
+end</pre>
+                        <pre class="pre">
+>> help prod
+prod - 数组元素的乘积
+
+    此 MATLAB 函数 返回 A 的数组元素的乘积。 如果 A 是向量，则 prod(A) 返回元素的乘积。 如果 A 为非空矩阵，则 prod(A) 将 A
+    的各列视为向量，并返回一个包含每列乘积的行向量。 如果 A 为 0×0 空矩阵，prod(A) 返回 1。 如果 A 为多维数组，则 prod(A)
+    沿第一个非单一维度运算并返回乘积数组。此维度的大小将减少至 1，而所有其他维度的大小保持不变。
+
+    B = prod(A)
+    B = prod(A,dim)
+    B = prod(___,type)
+    B = prod(___,nanflag)
+
+n = 1;
+while prod(1:n) < 1e100
+    n = n + 1;
+end
+disp(n)
+
+>> Untitled
+    70</pre>
+                    </li>
+                    <li>break,continue <br>使用基本上和c/c++类似</li>
+                </ol>
+            </li>
+            <li>Ctrl+C结束宕机</li>
+            <li>运算符<br>
+                <ol>
+                    <li>&lt;</li>
+                    <li>&lt;=</li>
+                    <li>&gt;</li>
+                    <li>&gt;=</li>
+                    <li>==</li>
+                    <li>~=</li>
+                    <li>&& mean is And</li>
+                    <li>|| mean is or</li>
+                </ol>
+            </li>
+            </li>
+        </ul>
+    </div>
+    <a name="p8"></a>
+    <div class="n3">
+        <ul>
+            <h1>自定义函数</h1>
+            <li>
+                <ol>
+                    <li>自定义函数模式使用python和java的模式，需要重新创建.m文件,但不需要导入即可使用</li>
+                    <li>打开一个.m文件<br>
+                        <pre class="pre">
+>> edit(which('mean.m'))</pre>
+                        这样就会打开mean.m文件<br>
+                        由三部分组成：
+                        <ol>
+                            <li>函数关键字function，函数名以及参数<br>
+                                <pre class="pre">
+function y = mean(x,dim,flag,flag2)</pre>
+                            </li>
+                            <li>注释</li>
+                            <li>函数内容</li>
+                        </ol>
+                    </li>
+                    <li>自定义函数撰写方式<br>
+                        <ul>
+                            <li>drop.m
+                                <pre class="pre">
+function x = drop(x0,v0,t)
+% 计算自由落体的高度
+% x0 是初位移
+% v0 是初速度
+% t 是时间
+x = x0 + v0.*t + 1/2.*9.8.*t.*t;</pre>
+                            </li>
+                            <li>命令行或是代码块均可以使用该函数<br>
+                                <pre class="pre">
+disp(drop(0,0,1))
+>> Untitled
+    4.9000
+
+>> drop(0,0,1)
+
+ans =
+
+    4.9000</pre>
+                            </li>
+                            <li>.*由为重要！ 若是你需要计算多组数据的时候，将会以矩阵的形式输入，那若是单纯的*就计算不出来结果。<br>
+                                <pre class="pre">
+>> drop ([1 2],[1 2],[1 2])
+
+ans =
+
+    6.9000   25.6000</pre>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>函数返会多个值 <br>
+                        <ul>
+                            <li>drop.m <br>
+                                <pre class="pre">
+function [x,y] = drop(x0,v0,t)
+% 计算下落速度和下落位移
+% x 为下落速度
+% y 为下落位移
+    x = v0 + 9.8.*t;
+    y = x0 + v0.*t + (1/2).*(9.8).*t;
+            </pre>
+                            </li>
+                            <li>命令行与程序内调用<br>
+                                <pre class="pre">
+>> [x y] = drop(0,0,1)
+
+x =
+
+    9.8000
+
+
+y =
+
+    4.9000
+
+[x y] = drop(0,0,1);
+disp(x)
+disp(y)
+>> Untitled
+    9.8000
+
+    4.9000</pre>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+            <li>input函数<br>
+                <ul>
+                    <li>x = input(prompt) 显示 prompt 中的文本并等待用户输入值后按 Return 键。用户可以输入 pi/4 或 rand(3) 之类的表达式，并可以使用工作区中的变量。
+                    </li>
+                    <li>如果用户不输入任何内容直接按下 Return 键，则 input 会返回空矩阵。</li>
+                    <li>如果用户在提示下输入无效的表达式，则 MATLAB® 会显示相关的错误消息，然后重新显示提示。</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <a name="jump3"></a>
+    <div class="title">变量与档案存储</div>
+    <div class="nav">
+        <ul>
+            <li><a href="#p9">变数（变量）</a></li>
+            <li><a href="#p10">char与string</a></li>
+            <li><a href="#p11">结构体</a></li>
+            <li><a href="#p12">cell元胞数组</a></li>
+        </ul>
+    </div>
+    <a name = "p9"></a>
+    <div class="n1">
+        <h1>变数（变量）</h1>
+        <ul>
+            <li>类型转换
+                <pre class="pre">
+>> a = 12
+
+a =
+
+    12
+
+>> b = string(a)
+
+b = 
+
+    "12"
+
+>> b = int32(a)
+
+b =
+
+    int32
+
+    12  </pre>
+            </li>
+            <li>变数类型
+                <ul>
+                    <li>int8,int16,int32,int64</li>
+                    <li>uint7,uint16,uint32,uint64</li>
+                    <li>char</li>
+                    <li>cell</li>
+                    <li>struct</li>
+                    <li>function handle(@)</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li>isinteger</li>
+                    <li>islogical</li>
+                    <li>isnan</li>
+                    <li>isnumeric</li>
+                    <li>isprime</li>
+                    <li>isreal</li>
+                    <li>iscell</li>
+                    <li>ischar</li>
+                    <li>isempty</li>
+                    <li>isequal</li>
+                    <li>isfloat</li>
+                    <li>isglobal</li>
+                    <li>ishandle</li>
+                    <li>isinf</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <a name="p10"></a>
+    <div class="n2">
+        <h1>char与string</h1>
+        <ul>
+            <li>char需要使用单引号来指定<br>与c/c++类似
+                <pre class="pre">
+>> a = 'a'
+
+a =
+
+'a'</pre> <br>
+                !若是单引号，则申明的是char类型，若是双引号则声明的是string类型 <br>
+                <pre class="pre">
+>> a = 'a'
+
+a =
+
+'a'
+
+>> b = "a"
+
+b = 
+
+"a"
+
+>> whos
+Name      Size            Bytes  Class     Attributes
+
+a         1x1                 2  char                
+b         1x1               134  string
+
+
+a =
+
+'fasdfsd'
+
+>> whos
+Name      Size            Bytes  Class     Attributes
+
+a         1x7                14  char                
+b         1x1               134  string</pre>单引号申明多个字符不会报错，仍然以char类型存储，但是会以矩阵的方式存储
+            </li>
+            <li>字符矩阵构建新矩阵结果仍然是char矩阵(数组)
+                <pre class="pre">
+>> a
+
+a =
+
+    'fasdfsd'
+
+>> b
+
+b =
+
+    'sdfsasd'
+
+>> c = [a b]
+
+c =
+
+    'fasdfsdsdfsasd'
+
+>> c = [a;b]
+
+c =
+
+  2×7 char 数组
+
+    'fasdfsd'
+    'sdfsasd'</pre>
+            </li>
+            <li>==运算符 <br>
+                会诸位诸位进行逻辑与运算
+                <pre class="pre">
+>> b
+
+b =
+
+    'sdfsasd'
+
+>> b == 'a'
+
+ans =
+
+  1×7 logical 数组
+
+   0   0   0   0   1   0   0</pre>
+            </li>
+            <li>巧用==进行查询替换(仅限于单个字符) <br>
+                <pre class="pre">
+>> b = 'abcbdbabsbsdbabsns'
+
+b =
+
+    'abcbdbabsbsdbabsns'
+
+>> b(b=='a') = '1'
+
+b =
+
+    '1bcbdb1bsbsdb1bsns'</pre>
+            </li>
+            <li>多字符串进行比较--strcmp与strcmpi <br>
+                <pre class="pre">
+>> a = 'abcde'
+
+a =
+
+    'abcde'
+
+>> b = 'ABCDE'
+
+b =
+
+    'ABCDE'
+
+>> strcmp(a,b)
+
+ans =
+
+  logical
+
+   0
+
+>> strcmpi(a,b)
+
+ans =
+
+  logical
+
+   1</pre>
+            </li>
+        </ul>
+    </div>
+    <a name = "p11"></a>
+    <div class="n3">
+        <h1>结构体</h1>
+        <ul>
+            <li>结构体struct <br>
+                <ul>
+                    <li> struct的声明及使用
+                        <pre class="pre">
+.m文件中
+a.name = 'zhang';
+a.id = '213123123';
+a.sex = "男";
+a.age = 12;
+a.grade = [
+    12 13 14 15;
+    16 17 18 19;
+    20 21 22 23
+];
+disp(a);
+
+command window中
+
+>> Untitled
+name: 'zhang'
+id: '213123123'
+sex: "男"
+age: 12
+grade: [3×4 double]</pre>
+                    </li>
+                    <li>多个struct的使用 <br>
+                        <pre class="pre">
+.m文件
+a.name = 'zhang';
+a.id = '213123123';
+a.sex = "男";
+a.age = 12;
+a.grade = [
+    12 13 14 15;
+    16 17 18 19;
+    20 21 22 23
+];
+disp(a);
+
+a(2).name = 'wang';
+a(2).id = '3421423325';
+a(2).sex = "女";
+a(2).age = 234;
+a(2).grade = [
+    1 2 3 4;
+    5 6 7 8;
+    9 1 0 1;
+];
+disp(a);
+
+commend window中
+>> Untitled
+     name: 'zhang'
+       id: '213123123'
+      sex: "男"
+      age: 12
+    grade: [3×4 double]
+
+  包含以下字段的 1×2 struct 数组:
+
+    name
+    id
+    sex
+    age
+    grade</pre>
+                    </li>
+                </ul>
+            </li>
+            <li>refield函数
+                <pre class="pre">
+>> help refield
+--- rmfield 的帮助 ---
+
+rmfield - 删除结构体中的字段
+
+    此 MATLAB 函数 从结构体数组 s 中删除指定的一个或多个字段。使用字符向量元胞数组指定多个字段。s 的维度保持不变。
+
+    s = rmfield(s,field)</pre>
+            </li>
+            <li>
+                <pre class="pre">
+>> a
+
+a = 
+
+  包含以下字段的 1×2 struct 数组:
+
+    name
+    id
+    sex
+    age
+    grade
+
+>> rmfield(a,'id')
+
+ans = 
+
+  包含以下字段的 1×2 struct 数组:
+
+    name
+    sex
+    age
+    grade</pre>
+            </li>
+            <li>struct内嵌struct <br>
+            <pre>
+.m文件
+a = struct('name','zhang','sex',"男",'grade',...
+    struct('math',67,'english',34));
+
+commend window
+>> a
+
+a = 
+
+  包含以下字段的 struct:
+
+     name: 'zhang'
+      sex: "男"
+    grade: [1×1 struct]
+
+>> a.grade
+
+ans = 
+
+  包含以下字段的 struct:
+
+       math: 67
+    english: 34</pre></li>
+        </ul>
+    </div>
+    <a name = "p12"></a>
+    <div class="n4">
+        <h1>cell元胞数组</h1>
+        <ul>
+            <li>主要是实现以下的功能
+
+                <pre class="pre">
+>> help cell
+cell - 元胞数组
+
+    元胞数组是一种包含名为元胞的索引数据容器的数据类型，其中的每个元胞都可以包含任意类型的数据。元胞数组通常包含文本列表、文本和数字的组合或者不同大小的数值数组。通过将索引括在圆括号
+    () 中可以引用元胞集。使用大括号 {} 进行索引来访问元胞的内容。
+
+    C = cell(n)
+    C = cell(sz1,...,szN)
+    C = cell(sz)
+    D = cell(obj)</pre>
+            </li>
+            <li>有两种声明方式 <br>
+            <ol>
+                <li>
+                    <pre class="pre">
+.m文件
+a(1,1) = {[12 12 432;32 423 32]};
+a(1,2) = {'我是一个字符串'};
+a(2,1) = {'a'};
+a(2,2) = {4123};
+disp(a)
+commend window
+>> Untitled
+    [2×3 double]    '我是一个字符串'
+    'a'             [        4123]
+                    </pre>
+                </li>
+                <li>
+                    <pre class="pre">
+.m文件
+a{1,1} = [12 12 432;32 423 32];
+a{1,2} = '我是一个字符串';
+a{2,1} = 'a';
+a{2,2} = 4123;
+disp(a)
+
+commend window
+>> Untitled
+    [2×3 double]    '我是一个字符串'
+    'a'             [        4123]</pre>
+                </li>
+            </ol></li>
+            <li>cell实际上是几个不同的指针进行指向，才实现一个cell中存在这么多的类别</li>
+            <li>读取数据的时候需要使用{} <br>
+                <pre class="pre">
+>> a(1,1)
+
+ans =
+
+    1×1 cell 数组
+
+    {2×3 double}
+
+>> a(1,1)
+
+ans =
+
+    1×1 cell 数组
+
+    {2×3 double}</pre>
+            </li>
+            <li>多维数组如何建立 <br>
+            <pre>
+>> help cat
+cat - 沿指定维度串联数组
+
+    此 MATLAB 函数 沿 dim 指定的数组维度串联数组 A 和 B。dim 参数必须是正整数值。
+
+    C = cat(dim, A, B)
+    C = cat(dim, A1, A2, A3, A4, ...)
+.m文件
+a = [1 2 ; 3 4];
+b = [5 6 ; 7 8];
+c = cat(4,a,b);
+disp(c(1,1,1));
+disp(c(1,1,2));
+disp(c(2,1,1));
+disp(c(2,2,1));
+
+commend window
+>> Untitled
+     1
+
+     5
+
+     3
+
+     4</pre></li>
+        </ul>
+    </div>
+</body>
+
+</html>
