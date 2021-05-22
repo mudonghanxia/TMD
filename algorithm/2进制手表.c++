@@ -1,43 +1,74 @@
 /*
-给定一个整数，编写一个函数来判断它是否是 2 的幂次方。
-输入: 1
-输出: true
-解释: 20 = 1
+二进制手表顶部有 4 个 LED 代表 小时（0-11），底部的 6 个 LED 代表 分钟（0-59）。
+每个 LED 代表一个 0 或 1，最低位在右侧。
+例如，上面的二进制手表读取 “3:25”。
+给定一个非负整数 n 代表当前 LED 亮着的数量，返回所有可能的时间。
 
-输入: 16
-输出: true
-解释: 24 = 16
+输入: n = 1
+返回: ["1:00", "2:00", "4:00", "8:00", "0:01", "0:02", "0:04", "0:08", "0:16", "0:32"]
 
-输入: 218
-输出: false
+输出的顺序没有要求。
+小时不会以零开头，比如 “01:00” 是不允许的，应为 “1:00”。
+分钟必须由两位数组成，可能会以零开头，比如 “10:2” 是无效的，应为 “10:02”。
+超过表示范围（小时 0-11，分钟 0-59）的数据将会被舍弃，也就是说不会出现 "13:00", "0:61" 等时间。
+
 */
 
-// 根据字面意思，按照幂次以此减少，来计算数据是否符合要求。为了加强效率，考虑到数据（非1）末尾元素若是1，3，5，7，9则必定不是2的幂次.
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
 class Solution {
 public:
-    bool isPowerOfTwo(int n) {
-        if(n <= 0) return false;
-        while(n != 1){
-            if(n % 10 % 2 == 1) return false;
-            n /= 2;
+    vector<string> readBinaryWatch(int num) {
+        vector<string> res;
+        //直接遍历  0:00 -> 12:00   每个时间有多少1
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 60; j++) {
+                if (count1(i) + count1(j) == num) {
+                    res.push_back(to_string(i)+":"+
+                                  (j < 10 ? "0"+to_string(j) : to_string(j)));
+                }
+            }
         }
-        return true;
+        return res;
+    }
+    //计算二进制中1的个数
+    int count1(int n) {
+        int res = 0;
+        while (n != 0) {
+            n = n & (n - 1);
+            res++;
+        }
+        return res;
     }
 };
 
-//官方的做法充分考虑到了数据本身是32位，按照位运算仍然可以便捷计算出数据是否为2的幂次，因为2的幂次有一种特殊的性质，在一个int中，32位数据总必定有且只有一位为1，其余位为0，按照与运算，若数据本身是偶数与n-1进行与运算后，所有位数均会清0，若数据本身是奇数，则数据32位中起码会有两个或者更过的1，所以减一后数据不会清零，这便是数据判断是否为2的幂次的一种算法。
 class Solution {
 public:
-    bool isPowerOfTwo(int n) {
-        return (n > 0 && (n & (n - 1)) == 0);
+    vector<string> readBinaryWatch(int num) {
+        int count1[60] = {0};
+        for(int i = 0;i<60;i++){
+            count1[i] = count(i);
+        }
+        vector<string> res;
+        for(int i = 0;i<12;i++){
+            for(int j = 0; j < 60; j++){
+                if(count1[i] + count1[j] == num)
+                    res.push_back(to_string(i)+":"+(j<10?("0"+to_string(j)):to_string(j)));
+            }
+        }
+        return res;
+    }
+
+    int count(int num){
+        int res = 0;
+        while(num){
+            num &=(num-1);
+            res++;
+        }
+        return res;
     }
 };
 
-//那么4的幂次呢？
-//先判断为2的幂次，然后判断位是否在奇数位
-class Solution {
-public:
-    bool isPowerOfFour(int n) {
-        return n > 0 && ((n & (n-1)) == 0) && (n & 0b01010101010101010101010101010101);
-    }
-};
